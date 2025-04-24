@@ -22,8 +22,9 @@ export default defineEventHandler(async (event) => {
     throw createError({ status: 400, statusMessage: "Code is required" });
   }
 
-  const clientId = config.straveClientId;
+  const clientId = "156255";
   const clientSecret = config.stravaClientSecret;
+
   if (!clientId || !clientSecret) {
     throw createError({
       status: 400,
@@ -40,6 +41,8 @@ export default defineEventHandler(async (event) => {
   const tokenResponse = await fetch(url, {
     method: "POST",
   });
+
+  console.log("Token response:", tokenResponse);
 
   if (!tokenResponse.ok) {
     throw createError({
