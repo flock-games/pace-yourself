@@ -5,6 +5,10 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui", "@nuxtjs/supabase", "@pinia/nuxt"],
   css: ["~/assets/css/main.css"],
 
+  supabase: {
+    redirect: false,
+  },
+
   runtimeConfig: {
     public: {
       supabaseRedirectUrl: process.env.SUPABASE_REDIRECT_URL,

@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import type { Database } from "~/database.types";
+
+const supabase = useSupabaseClient<Database>();
 const config = useRuntimeConfig();
+
+const { data: userData } = await supabase.auth.getUser();
+if (!userData.user) {
+  const { data, error } = await supabase.auth.signInAnonymously();
+}
 
 const startConnectWithStrava = async () => {
   await navigateTo(
