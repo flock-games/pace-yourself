@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     public: {
       supabaseRedirectUrl: process.env.SUPABASE_REDIRECT_URL,
       straveClientId: process.env.STRAVA_CLIENT_ID,
-      stravaRedirectUri: process.env.STRAVA_REDIRECT_URI,
+      stravaRedirectUrl: process.env.STRAVA_REDIRECT_URL,
     },
     stravaClientSecret: process.env.STRAVA_CLIENT_SECRET,
   },

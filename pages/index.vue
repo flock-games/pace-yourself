@@ -11,7 +11,7 @@ if (!userData.user) {
 
 const startConnectWithStrava = async () => {
   await navigateTo(
-    `http://www.strava.com/oauth/authorize?client_id=${config.public.straveClientId}&response_type=code&redirect_uri=${config.public.redirectUrl}&approval_prompt=force&scope=read,activity:read`,
+    `http://www.strava.com/oauth/authorize?client_id=${config.public.straveClientId}&response_type=code&redirect_uri=${config.public.stravaRedirectUrl}&approval_prompt=force&scope=read,activity:read`,
     {
       external: true,
     }
