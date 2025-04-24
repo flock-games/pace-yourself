@@ -4,4 +4,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxtjs/supabase", "@pinia/nuxt"],
   css: ["~/assets/css/main.css"],
+
+  runtimeConfig: {
+    public: {
+      straveClientId: process.env.STRAVA_CLIENT_ID,
+      stravaRedirectUri: process.env.STRAVA_REDIRECT_URI,
+    },
+    stravaClientSecret: process.env.STRAVA_CLIENT_SECRET,
+  },
 });
