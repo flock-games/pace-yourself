@@ -26,8 +26,6 @@ const startConnectWithStrava = async () => {
 };
 </script>
 <template>
-  {{ id }}<br />
-  {{ token }}<br />
   <h1 class="text-3xl font-bold mb-4">Goals</h1>
   <GoalForm class="mb-4" />
   <GoalList />
@@ -39,5 +37,5 @@ const startConnectWithStrava = async () => {
     alt="Connect with Strava"
     class="cursor-pointer"
   />
-  <RecentEfforts v-else :token="token" />
+  <ActivityList v-else :token="token" />
 </template>

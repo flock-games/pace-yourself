@@ -24,14 +24,14 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  return data.map((activity: any) => {
-    return {
-      start_date_local: activity.start_date_local,
-      name: activity.name,
-      type: activity.type,
-      distance: activity.distance,
-      moving_time: activity.moving_time,
-      elapsed_time: activity.elapsed_time,
-    };
-  });
+  return data
+    .filter((activity: any) => activity.type == "Run")
+    .map((activity: any) => {
+      return {
+        start_date_local: activity.start_date_local,
+        name: activity.name,
+        distance: activity.distance,
+        moving_time: activity.moving_time,
+      };
+    });
 });
