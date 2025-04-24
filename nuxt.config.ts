@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      supabaseRedirectUrl: process.env.SUPABASE_REDIRECT_URL,
       straveClientId: process.env.STRAVA_CLIENT_ID,
       stravaRedirectUri: process.env.STRAVA_REDIRECT_URI,
     },
