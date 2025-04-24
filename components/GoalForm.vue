@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const time = useTimeUtils();
+const goalStore = useGoalsStore();
 
 const eventItems = [
   { label: "5k", value: "5k" },
@@ -10,16 +10,12 @@ const eventItems = [
 const event = ref("5k");
 const goal = ref("");
 
-const submit = async () => {
-  const { data, error } = await useFetch(`/api/goal/create`, {
-    method: "POST",
-    body: {
-      event: event.value,
-      goal: time.minutesStringToSeconds(goal.value),
-    },
-  });
-  console.log("data", data);
-  console.log("error", error);
+const submit = () => {
+  goalStore.create(event.value, goal.value);
+
+  // Reset the form
+  goal.value = "";
+  event.value = "5k";
 };
 </script>
 

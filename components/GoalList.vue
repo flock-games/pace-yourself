@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { UAvatar } from "#components";
 import type { TableColumn } from "@nuxt/ui/runtime/components/Table.vue.js";
 
 type GoalDisplay = {
@@ -9,12 +8,15 @@ type GoalDisplay = {
   mile_pace: string;
 };
 
-const { data: goals, error } = await useFetch("/api/goal/list");
-
+const goalStore = useGoalsStore();
 const time = useTimeUtils();
 
-const tableData =
-  goals.value?.map((goal): GoalDisplay => {
+await useAsyncData(() => goalStore.fetch());
+
+const tableData = computed(() => {
+  if (!goalStore.goals) return [];
+
+  return goalStore.goals.map((goal): GoalDisplay => {
     return {
       event: goal.event ?? "",
       goal: time.displayTime(goal.goal ?? 0),
@@ -25,7 +27,8 @@ const tableData =
         time.mileSeconds(goal.goal ?? 0, goal.event ?? "")
       ),
     };
-  }) ?? [];
+  });
+});
 
 const tableColumns: TableColumn<GoalDisplay>[] = [
   {
@@ -45,9 +48,6 @@ const tableColumns: TableColumn<GoalDisplay>[] = [
     header: "Mile Pace",
   },
 ];
-
-console.log("goals", goals);
-console.log("error", error);
 </script>
 
 <template>
