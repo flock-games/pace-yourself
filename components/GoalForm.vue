@@ -1,23 +1,20 @@
 <script lang="ts" setup>
-// import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 
-// const config = useRuntimeConfig();
+const config = useRuntimeConfig();
 
 const eventItems = ["5k", "10k", "Half Marathon", "Marathon"];
 const event = ref("5k");
 const goal = ref("");
 
-// const supabase = createClient(
-//   config.public.supabaseUrl,
-//   config.public.supabaseKey,
-//   {
-//     accessToken: () => {
-//       return Clerk.session?.getToken();
-//     },
-//   }
-// );
 
-const submit = () => {};
+const submit = async () => {
+  const { data, error } = await useFetch(`/api/goal/create`, {
+    method: "POST",
+  });
+  console.log("data", data);
+  console.log("error", error);
+};
 </script>
 
 <template>
