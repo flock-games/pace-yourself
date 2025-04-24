@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const time = useTimeUtils();
+
 const eventItems = [
   { label: "5k", value: "5k" },
   { label: "10k", value: "10k" },
@@ -13,7 +15,7 @@ const submit = async () => {
     method: "POST",
     body: {
       event: event.value,
-      goal: goal.value,
+      goal: time.minutesStringToSeconds(goal.value),
     },
   });
   console.log("data", data);
