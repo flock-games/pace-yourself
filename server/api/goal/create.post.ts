@@ -3,9 +3,14 @@ import { Database } from "~/database.types";
 
 export default defineEventHandler(async (event) => {
   const supabase = await serverSupabaseClient<Database>(event);
+
+  // Get event and goal from body
+  const body = await readBody(event);
+  const { event: eventName, goal } = body as { event: string; goal: number };
+
   const { data, error } = await supabase
     .from("goals")
-    .insert({ event: "5k", goal: 5000 })
+    .insert({ event: eventName, goal: goal })
     .select()
     .single();
 

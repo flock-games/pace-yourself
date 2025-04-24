@@ -1,16 +1,20 @@
 <script lang="ts" setup>
-import { createClient } from "@supabase/supabase-js";
-
-const config = useRuntimeConfig();
-
-const eventItems = ["5k", "10k", "Half Marathon", "Marathon"];
+const eventItems = [
+  { label: "5k", value: "5k" },
+  { label: "10k", value: "10k" },
+  { label: "Half Marathon", value: "half marathon" },
+  { label: "Marathon", value: "marathon" },
+];
 const event = ref("5k");
 const goal = ref("");
-
 
 const submit = async () => {
   const { data, error } = await useFetch(`/api/goal/create`, {
     method: "POST",
+    body: {
+      event: event.value,
+      goal: goal.value,
+    },
   });
   console.log("data", data);
   console.log("error", error);
