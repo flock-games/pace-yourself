@@ -4,4 +4,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@clerk/nuxt", "@nuxt/ui"],
   css: ["~/assets/css/main.css"],
+
+  runtimeConfig: {
+    public: {
+      supabaseUrl: process.env.NUXT_SUPABASE_URL,
+      supabaseKey: process.env.NUXT_SUPABASE_KEY,
+    },
+  },
 });

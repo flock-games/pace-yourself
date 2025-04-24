@@ -1,16 +1,9 @@
 <template>
   <UApp>
-    <header>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
-
     <main>
-      <NuxtPage />
+      <UContainer class="mt-16">
+        <NuxtPage />
+      </UContainer>
     </main>
   </UApp>
 </template>
