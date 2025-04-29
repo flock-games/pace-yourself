@@ -73,7 +73,7 @@ export default defineEventHandler(async (event) => {
     .from("refresh_tokens")
     .upsert({
       user_id: user.id,
-      token: accessToken,
+      token: refreshToken,
     });
 
   return {
